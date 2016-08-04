@@ -1,7 +1,7 @@
 ---
 - name: set piwik_root
   set_fact:
-    piwik_root: '"{{ piwik_install_location | default( piwik.install_location ) }}"/"{{ piwik.unpack_dir }}"'
+    piwik_root: "{{ piwik_install_location | default( piwik.install_location ) }}/{{ piwik.unpack_dir }}"
 
 - name: create installation directory
   file:
