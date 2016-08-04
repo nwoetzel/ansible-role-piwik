@@ -4,7 +4,8 @@ piwik:
   user:           "root"
   group:          "root"
   server_name:    "piwik"
-  install_location: "/var/www/piwik"
+  install_location: "/var/www"
+  unpack_dir:     "piwik"
   db:
     user:         "piwik"
     password:     "piwik"

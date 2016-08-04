@@ -1,4 +1,8 @@
 ---
+- name: set piwik_root
+  set_fact:
+    piwik_root: '"{{ piwik_install_location | default( piwik.install_location ) }}"/"{{ piwik.unpack_dir }}"'
+
 - name: create installation directory
   file:
     path:  "{{ piwik_install_location | default( piwik.install_location ) }}"
@@ -19,7 +23,7 @@
 - name: "Create config.ini.php"
   template:
     src:   "config.ini.php.j2"
-    dest:  "{{ piwik_install_location | default( piwik.install_location ) }}/config/config.ini.php"
+    dest:  "{{ piwik_root }}/config/config.ini.php"
     owner: "{{ piwik_user | default( piwik.user ) }}"
     group: "{{ piwik_user | default( piwik.user ) }}"
     mode:  0664
