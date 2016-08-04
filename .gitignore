@@ -1,0 +1,5 @@
+# exclude roles that are installed from ansible-galaxy
+tests/roles/*
+!tests/roles/requirements.yml
+# exclude downloads created by tests
+tests/downloads

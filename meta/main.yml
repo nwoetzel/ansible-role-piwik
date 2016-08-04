@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Nils Woetzel
+  description: Installer for piwik with selected plugins.
+  company: Heidelberg Institute for Theoretical Studies gGmbH, Heidelberg, Germany
+  license: MIT
+  min_ansible_version: 2.0.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - piwik
+dependencies: []

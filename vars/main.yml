@@ -1,0 +1,16 @@
+---
+# some defaults that can be ovewritten
+piwik:
+  user:           "root"
+  group:          "root"
+  server_name:    "piwik"
+  install_location: "/var/www/piwik"
+  db:
+    user:         "piwik"
+    password:     "piwik"
+    name:         "piwik"
+    table_prefix: ""
+  download:
+    url:    "http://builds.piwik.org"
+    file:   "piwik.zip"
+  plugins_url:     "https://plugins.piwik.org/api/1.0/plugins"

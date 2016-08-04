@@ -1,0 +1,19 @@
+---
+# Fetch latest release
+- name: "Fetch latest Piwik release"
+  sudo: yes
+  unarchive:
+    src:   "{{ piwik_download_url | default( piwik.download.url ) }}/{{ piwik_download_file | default( piwik.download.file ) }}"
+    dest:    "{{ piwik_install_location | default( piwik.install_location ) }}"
+    owner:   "{{ piwik_user | default( piwik.user ) }}"
+    group:   "{{ piwik_group | default( piwik.group ) }}"
+
+# create config.ini.php with default settings
+- name: "Create config.ini.php"
+  sudo: yes
+  template:
+    src: "config.ini.php.j2"
+    dest: "{{ piwik_install_location | default( piwik.install_location ) }}/config/config.ini.php"
+    owner: "{{ piwik_user | default( piwik.user ) }}"
+    group: "{{ piwik_user | default( piwik.user ) }}"
+    mode:  0664

@@ -1,0 +1,11 @@
+---
+#piwik_user:             "root"
+#piwik_group:            "root"
+#piwik_install_location: "/var/www/piwik"
+#piwik_db_user:          "piwik"
+#piwik_db_password:      "piwik"
+#piwik_db_name:          "piwik"
+#piwik_db_table_prefix:  ""
+#piwik_download_url:     "http://builds.piwik.org"
+#piwik_download_file:    "piwik.zip"
+#piwik_plugins_url:      "https://plugins.piwik.org/api/1.0/plugins"

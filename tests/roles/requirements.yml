@@ -1,0 +1,4 @@
+# from github
+- name: GROG.package
+  version: v1.2.1
+  path: roles/
