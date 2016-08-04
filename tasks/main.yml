@@ -4,7 +4,7 @@
     path:  "{{ piwik_install_location | default( piwik.install_location ) }}"
     owner: "{{ piwik_user | default( piwik.user ) }}"
     group: "{{ piwik_group | default( piwik.group ) }}"
-    state: directory
+    state: "directory"
 
 # Fetch latest release
 - name: "Fetch latest Piwik release"
