@@ -18,6 +18,7 @@
     dest:  "{{ piwik_install_location | default( piwik.install_location ) }}"
     owner: "{{ piwik_user | default( piwik.user ) }}"
     group: "{{ piwik_group | default( piwik.group ) }}"
+    creates: "{{ piwik_root }}"
 
 # create config.ini.php with default settings
 - name: "Create config.ini.php"
