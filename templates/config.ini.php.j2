@@ -14,6 +14,8 @@ trusted_hosts[] = "{{ piwik_server_name | default( piwik.server_name ) }}"
 ;assume_secure_protocol = 1
 ;proxy_client_headers[] = HTTP_X_FORWARDED_FOR
 ;proxy_host_headers[] = HTTP_X_FORWARDED_HOST
+; http://piwik.org/faq/how-to-install/#faq_133
+session_save_handler = dbtable
 
 [Plugins]
 Plugins[] = "CorePluginsAdmin"
