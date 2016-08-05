@@ -13,5 +13,7 @@ piwik:
     table_prefix: ""
   download:
     url:    "https://builds.piwik.org"
-    file:   "piwik.zip"
+    file_prefix:    "piwik"
+    version:        "latest"
+    file_extension: ".zip"
   plugins_url:     "https://plugins.piwik.org/api/1.0/plugins"

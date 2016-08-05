@@ -2,6 +2,7 @@
 - name: set piwik_root
   set_fact:
     piwik_root: "{{ piwik_install_location | default( piwik.install_location ) }}/{{ piwik.unpack_dir }}"
+    piwik_download_file: "{{ piwik.download.file_prefix }}-{{ piwik_download_version | default( piwik.download.version ) }}{{ piwik_download_file_extension | default( piwik.download.file_extension ) }}"
 
 - name: create installation directory
   file:
@@ -14,7 +15,7 @@
 - name: "Fetch latest Piwik release"
   unarchive:
     copy:  no
-    src:   "{{ piwik_download_url | default( piwik.download.url ) }}/{{ piwik_download_file | default( piwik.download.file ) }}"
+    src:   "{{ piwik_download_url | default( piwik.download.url ) }}/{{ piwik_download_file }}"
     dest:  "{{ piwik_install_location | default( piwik.install_location ) }}"
     owner: "{{ piwik_user | default( piwik.user ) }}"
     group: "{{ piwik_group | default( piwik.group ) }}"
