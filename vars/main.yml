@@ -3,6 +3,10 @@
 piwik:
   user:           "root"
   group:          "root"
+  web:
+    user:         "www-data"
+    group:        "www-data"
+    dirs: ['tmp','config','misc']
   server_name:    "piwik"
   install_location: "/var/www"
   unpack_dir:     "piwik"
