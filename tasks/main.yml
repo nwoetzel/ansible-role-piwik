@@ -26,8 +26,8 @@
   template:
     src:   "config.ini.php.j2"
     dest:  "{{ piwik_root }}/config/config.ini.php"
-    owner: "{{ piwik_user | default( piwik.user ) }}"
-    group: "{{ piwik_user | default( piwik.user ) }}"
+    owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
+    group: "{{ piwik_web_user | default( piwik.web.user ) }}"
     mode:  0664
 
 # Create Piwik temp folders
