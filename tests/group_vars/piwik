@@ -1,1 +1,3 @@
 ---
+piwik_web_user:  root
+piwik_web_group: root
