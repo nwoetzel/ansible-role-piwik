@@ -506,7 +506,7 @@ CREATE TABLE `site` (
 --
 
 LOCK TABLES `site` WRITE;
-{% for site in default( piwik_sites, piwik.sites.default_sites ) %}
+{% for site in piwik_sites %}
 INSERT INTO `site` VALUES (
  {{ loop.index }},
 '{{ site.name }}',
