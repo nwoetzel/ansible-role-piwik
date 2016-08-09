@@ -506,6 +506,27 @@ CREATE TABLE `site` (
 --
 
 LOCK TABLES `site` WRITE;
+{% for site in default( piwik_sites, piwik.sites.default_sites ) %}
+INSERT INTO `site` VALUES (
+ {{ loop.index }},
+'{{ site.name }}',
+'{{ site.main_url }}',
+ NULL,
+ {{ site.ecommerce                      | default( piwik.sites.defaults.ecommerce ) }},
+ {{ site.sitesearch                     | default( piwik.sites.defaults.sitesearch ) }},
+'{{ site.sitesearch_keyword_parameters  | default( piwik.sites.defaults.sitesearch_keyword_parameters ) }}',
+'{{ site.sitesearch_category_parameters | default( piwik.sites.defaults.sitesearch_category_parameters ) }}',
+'{{ site.timezone                       | default( piwik.sites.defaults.timezone ) }}',
+'{{ site.currency                       | default( piwik.sites.defaults.currency ) }}',
+ {{ site.exclude_unknown_urls           | default( piwik.sites.defaults.exclude_unknown_urls ) }},
+'{{ site.excluded_ips                   | default( piwik.sites.defaults.excluded_ips ) }}',
+'{{ site.excluded_parameters            | default( piwik.sites.defaults.excluded_parameters ) }}',
+'{{ site.excluded_user_agents           | default( piwik.sites.defaults.excluded_user_agents ) }}',
+'{{ site.group                          | default( piwik.sites.defaults.group ) }}',
+'{{ site.type                           | default( piwik.sites.defaults.type ) }}',
+ {{ site.keep_url_fragment              | default( piwik.sites.defaults.keep_url_fragment ) }}
+);
+{% endfor %} 
 UNLOCK TABLES;
 
 --
