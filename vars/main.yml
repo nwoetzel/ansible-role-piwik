@@ -15,6 +15,10 @@ piwik:
     password:     "piwik"
     name:         "piwik"
     table_prefix: ""
+  admin:
+    user:         "piwik_admin"
+    password:     "piwik_admin_password"
+    email:        ""
   download:
     url:    "https://builds.piwik.org"
     file_prefix:    "piwik"

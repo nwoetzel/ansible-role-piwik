@@ -1,0 +1,11 @@
+- name: prepare mysql dump restore
+  template:
+    src: "piwik.sql.j2"
+    dest: "/tmp/piwik.sql"
+
+- name: restore dump
+  mysql_db:
+    name: "{{ piwik.db.name }}"
+    target: "/tmp/piwik.sql"
+    state: import
+  ignore_errors: yes

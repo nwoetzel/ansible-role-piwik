@@ -40,3 +40,6 @@
     mode:  0755
     state: directory
   with_items: "{{ piwik.web.dirs }}"
+
+- name: setup database
+  include: db.yml
