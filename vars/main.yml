@@ -7,7 +7,7 @@ piwik:
     user:         "www-data"
     group:        "www-data"
     dirs:         ['tmp','config','misc']
-  server_name:    "piwik"
+  server_name:    "localhost"
   install_location: "/var/www"
   unpack_dir:     "piwik"
   db:

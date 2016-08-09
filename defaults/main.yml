@@ -3,6 +3,7 @@
 #piwik_group:            "root"
 #piwik_web_user:         "www-data"
 #piwik_web_group:        "www-data"
+#piwik_servername:       "localhost"
 #piwik_install_location: "/var/www"
 #piwik_db_user:          "piwik"
 #piwik_db_password:      "piwik"
