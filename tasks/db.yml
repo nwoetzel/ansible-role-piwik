@@ -2,6 +2,7 @@
   template:
     src: "piwik.sql.j2"
     dest: "/tmp/piwik.sql"
+    force: no
 
 - name: restore dump
   mysql_db:
