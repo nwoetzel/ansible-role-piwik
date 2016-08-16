@@ -1,3 +1,5 @@
 ---
-piwik_web_user:  root
-piwik_web_group: root
+piwik_user:      travis
+piwik_group:     travis
+piwik_web_user:  travis
+piwik_web_group: travis
