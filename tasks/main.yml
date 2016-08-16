@@ -29,6 +29,7 @@
     owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
     group: "{{ piwik_web_user | default( piwik.web.user ) }}"
     mode:  0664
+    force: no
 
 # Create Piwik temp folders
 - name: "Create Piwik temp folders"
