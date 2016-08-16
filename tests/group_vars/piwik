@@ -1,4 +1,5 @@
 ---
+piwik_install_location: /home/travis
 piwik_user:      travis
 piwik_group:     travis
 piwik_web_user:  travis
