@@ -32,7 +32,6 @@
 
 # Create Piwik temp folders
 - name: "Create Piwik temp folders"
-  sudo: yes
   file:
     path:  "{{ piwik_root }}/{{ item }}"
     owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
