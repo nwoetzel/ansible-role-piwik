@@ -510,7 +510,7 @@ INSERT INTO `site` VALUES (
  {{ loop.index }},
 '{{ site.name }}',
 '{{ site.main_url }}',
- NULL,
+'{{ ansible_date_time.date ~ " " ~ ansible_date_time.time }}',
  {{ site.ecommerce                      | default( piwik.sites.defaults.ecommerce ) }},
  {{ site.sitesearch                     | default( piwik.sites.defaults.sitesearch ) }},
 '{{ site.sitesearch_keyword_parameters  | default( piwik.sites.defaults.sitesearch_keyword_parameters ) }}',
