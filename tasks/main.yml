@@ -43,3 +43,8 @@
 
 - name: setup database
   include: db.yml
+
+- name: "call console commands"
+  command: "./console {{ item }}"
+    chdir: "{{ piwik_root }}"
+  with_items: "{{ piwik_commands }}"

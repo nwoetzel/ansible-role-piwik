@@ -32,3 +32,6 @@ piwik_sites:
 #  group: ""
 #  type: "website"
 #  keep_url_fragment: "0"
+# call some command after isntallation is finished for some finale setup
+piwik_commands: []
+#  - "config:set --section=General --key=session_save_handler --value=dbtable"
