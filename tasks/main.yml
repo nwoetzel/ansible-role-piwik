@@ -45,6 +45,8 @@
   include: db.yml
 
 - name: "call console commands"
-  command: "./console {{ item }}"
+  command: "./console {{ item.1 }} > temp/logs/ansible-piwik-command-{{ item.0 }}.log"
+  args:
     chdir: "{{ piwik_root }}"
-  with_items: "{{ piwik_commands }}"
+    creates: "{{ piwik_root }}/temp/logs/ansible-piwik-command-{{ item.0 }}.log"
+  with_indexed_items: "{{ piwik_commands }}"
