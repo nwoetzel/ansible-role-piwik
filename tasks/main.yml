@@ -3,12 +3,16 @@
   set_fact:
     piwik_root: "{{ piwik_install_location | default( piwik.install_location ) }}/{{ piwik.unpack_dir }}"
     piwik_download_file: "{{ piwik.download.file_prefix }}-{{ piwik_download_version | default( piwik.download.version ) }}{{ piwik_download_file_extension | default( piwik.download.file_extension ) }}"
+    piwik_user: "{{ piwik_user | default( piwik.user ) }}"
+    piwik_group: "{{ piwik_group | default( piwik.group ) }}"
+    piwik_web_user: "{{ piwik_web_user | default( piwik.web.user ) }}"
+    piwik_web_group: "{{ piwik_web_group | default( piwik.web.group ) }}"
 
 - name: create installation directory
   file:
     path:  "{{ piwik_install_location | default( piwik.install_location ) }}"
-    owner: "{{ piwik_user | default( piwik.user ) }}"
-    group: "{{ piwik_group | default( piwik.group ) }}"
+    owner: "{{ piwik_user }}"
+    group: "{{ piwik_group }}"
     state: directory
 
 # Fetch latest release
@@ -17,8 +21,8 @@
     copy:  no
     src:   "{{ piwik_download_url | default( piwik.download.url ) }}/{{ piwik_download_file }}"
     dest:  "{{ piwik_install_location | default( piwik.install_location ) }}"
-    owner: "{{ piwik_user | default( piwik.user ) }}"
-    group: "{{ piwik_group | default( piwik.group ) }}"
+    owner: "{{ piwik_user }}"
+    group: "{{ piwik_group }}"
     creates: "{{ piwik_root }}"
 
 # create config.ini.php with default settings
@@ -26,8 +30,8 @@
   template:
     src:   "config.ini.php.j2"
     dest:  "{{ piwik_root }}/config/config.ini.php"
-    owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
-    group: "{{ piwik_web_user | default( piwik.web.group ) }}"
+    owner: "{{ piwik_web_user }}"
+    group: "{{ piwik_web_group }}"
     mode:  0664
     force: no
 
@@ -35,8 +39,8 @@
   copy:
     src: "optout.php"
     dest: "{{ piwik_root }}/optout.php"
-    owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
-    group: "{{ piwik_web_user | default( piwik.web.group ) }}"
+    owner: "{{ piwik_web_user }}"
+    group: "{{ piwik_web_group }}"
     mode:  0664
   when: piwik_optout_script
 
@@ -44,8 +48,8 @@
 - name: Create Piwik temp folders
   file:
     path:  "{{ piwik_root }}/{{ item }}"
-    owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
-    group: "{{ piwik_web_group | default( piwik.web.group ) }}"
+    owner: "{{ piwik_web_user }}"
+    group: "{{ piwik_web_group }}"
     mode:  0755
     state: directory
   with_items: "{{ piwik.web.dirs }}"
