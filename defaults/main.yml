@@ -16,6 +16,11 @@
 #piwik_download_version: "latest"
 #piwik_download_file_extension: ".zip"
 #piwik_plugins_url:      "https://plugins.piwik.org/api/1.0/plugins"
+
+# write a optout.php file, that works only when used with query_args like: optout.php?module=CoreAdminHome&action=optOut
+# this allows for protecting index.php in apache/nginx without disabling optout functionality using the optout.php script 
+piwik_optout_script: True
+
 piwik_sites:
 - name:      "piwik"
   main_url:  "https://piwik.org/"

@@ -1,5 +1,5 @@
 ---
-- name: set piwik_root
+- name: Set piwik_root
   set_fact:
     piwik_root: "{{ piwik_install_location | default( piwik.install_location ) }}/{{ piwik.unpack_dir }}"
     piwik_download_file: "{{ piwik.download.file_prefix }}-{{ piwik_download_version | default( piwik.download.version ) }}{{ piwik_download_file_extension | default( piwik.download.file_extension ) }}"
@@ -12,7 +12,7 @@
     state: directory
 
 # Fetch latest release
-- name: "Fetch latest Piwik release"
+- name: Fetch latest Piwik release
   unarchive:
     copy:  no
     src:   "{{ piwik_download_url | default( piwik.download.url ) }}/{{ piwik_download_file }}"
@@ -22,17 +22,26 @@
     creates: "{{ piwik_root }}"
 
 # create config.ini.php with default settings
-- name: "Create config.ini.php"
+- name: Create config.ini.php
   template:
     src:   "config.ini.php.j2"
     dest:  "{{ piwik_root }}/config/config.ini.php"
     owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
-    group: "{{ piwik_web_user | default( piwik.web.user ) }}"
+    group: "{{ piwik_web_user | default( piwik.web.group ) }}"
     mode:  0664
     force: no
 
+- name: Create optout.php
+  copy:
+    src: "optout.php"
+    dest: "{{ piwik_root }}/optout.php"
+    owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
+    group: "{{ piwik_web_user | default( piwik.web.group ) }}"
+    mode:  0664
+  when: piwik_optout_script
+
 # Create Piwik temp folders
-- name: "Create Piwik temp folders"
+- name: Create Piwik temp folders
   file:
     path:  "{{ piwik_root }}/{{ item }}"
     owner: "{{ piwik_web_user | default( piwik.web.user ) }}"
