@@ -1,12 +1,16 @@
 - name: prepare mysql dump restore
   template:
     src: "piwik.sql.j2"
-    dest: "/tmp/piwik.sql"
+    dest: "{{ piwik_root }}/piwik.sql"
+    owner: "{{ piwik_web_user }}"
+    group: "{{ piwik_web_group }}"
     force: no
+  register: piwik_sql_dump_create
 
 - name: restore dump
   mysql_db:
     name: "{{ piwik.db.name }}"
-    target: "/tmp/piwik.sql"
+    target: "{{ piwik_root }}/piwik.sql"
     state: import
   ignore_errors: yes
+  when: piwik_sql_dump_create | changed
